@@ -3,9 +3,15 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import 'dotenv/config'
+
+// Importamos la conexión con la base de datos
+import connectDB from './config/database.js'
+// Conectamos con la base de datos
+connectDB()
 
 // Rutas del servidor
-import usersRouter from './routes/users.js';
+import usersRouter from './routes/users.routes.js';
 
 const app = express();
 
