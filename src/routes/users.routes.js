@@ -19,5 +19,19 @@ router.get('/all', function(req, res, next) {
 });
 
 // Crear un usuario
+router.post('/create', function(req, res, next) {
+  usersController.create(req.body)
+  .then((response) => {
+    res.status(response.status).json({
+      "message": response.message,
+      "data": response.data
+    })
+  })
+  .catch((error) => {
+    res.status(error.status).json({
+      "message": error.message
+    })
+  })
+})
 
 export default router;
