@@ -34,4 +34,20 @@ router.post('/create', function(req, res, next) {
   })
 })
 
+// Buscar un usuario
+router.get('/search/:username', function(req, res, next) {
+  usersController.searchOne(req.params.username)
+  .then((response) => {
+    res.status(response.status).json({
+      "message": response.message,
+      "data": response.data
+    })
+  })
+  .catch((error) => {
+    res.status(error.status).json({
+      "message": error.message
+    })
+  })
+})
+
 export default router;

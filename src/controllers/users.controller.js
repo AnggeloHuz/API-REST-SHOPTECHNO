@@ -70,6 +70,30 @@ class usersControllers {
             }
         })
     }
+
+    searchOne(username) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const userSearch = await UsersModel.find({username: username})
+                if (userSearch.length === 0) {
+                    return reject({
+                        status: 400,
+                        message: "No se encontro el usuario " + username
+                    })
+                }
+                return resolve({
+                    status: 200,
+                    message: "Se ha encontrado al usuario " + username,
+                    data: userSearch
+                })
+            } catch (error) {
+                return reject({
+                    status: 500,
+                    message: "Error interno del servidor: " + error
+                })
+            }
+        })
+    }
 }
 
 export default new usersControllers;
