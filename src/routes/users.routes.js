@@ -50,4 +50,20 @@ router.get('/search/:username', function(req, res, next) {
   })
 })
 
+// Actualizar Contraseña
+router.put('/change-password/:username', function(req, res, next) {
+  usersController.updatePassword(req.params.username, req.body)
+  .then((response) => {
+    res.status(response.status).json({
+      "message": response.message,
+      "data": response.data
+    })
+  })
+  .catch((error) => {
+    res.status(error.status).json({
+      "message": error.message
+    })
+  })
+})
+
 export default router;

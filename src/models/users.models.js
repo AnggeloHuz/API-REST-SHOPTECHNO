@@ -16,6 +16,9 @@ const usersModel = new Schema({
     type: String,
     required: true // Este campo es obligatorio
   }
+}, {
+  // Opción clave para deshabilitar el campo __v
+  versionKey: false
 });
 
 const UsersModel = mongoose.model('users', usersModel);
