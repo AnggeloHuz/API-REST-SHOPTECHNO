@@ -23,3 +23,11 @@ export const validatePassword = (password) => {
   return passwordRegex.test(password);
   // 
 };
+
+export function validateEmail(email) {
+  // Expresión regular para validar el formato básico de un email
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+  // .test() devuelve true si la cadena coincide con la regex, false si no
+  return regex.test(String(email).toLowerCase()); //true si es valido, false si el erroneo
+}

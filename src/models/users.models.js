@@ -2,6 +2,18 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const usersModel = new Schema({
+  name: {
+    type: String,
+    required: true // Este campo es obligatorio
+  },
+  lastname: {
+    type: String,
+    required: true // Este campo es obligatorio
+  },
+  email: {
+    type: String,
+    required: true // Este campo es obligatorio
+  },
   username: {
     type: String,
     unique: true,
